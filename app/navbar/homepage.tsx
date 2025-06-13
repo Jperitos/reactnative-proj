@@ -25,7 +25,7 @@ const shoes = [
     reviews: 3200,
     likes: 5400,
     liked: false,
-    image: "https://cdn.freebiesupply.com/images/large/2x/air-jordan-logo-png-transparent.png", // Nike AF1
+    image: "https://www.pngkey.com/png/full/204-2046997_air-force-1-png-nike-air-force-1.png", // Nike AF1
   },
   {
     id: "2",
@@ -37,7 +37,7 @@ const shoes = [
     reviews: 4100,
     likes: 6200,
     liked: false,
-    image: "https://images.unsplash.com/photo-1606813902914-1c0047b9aa4c", // NikeCourt
+    image: "https://images.stockx.com/images/Nike-Court-Air-Zoom-Vapor-Pro-3-Premium-HC-White-Midnight-Navy.jpg?fit=fill&bg=FFFFFF&w=576&h=384&q=41&dpr=3&trim=color&updated_at=1749674955", // NikeCourt
   },
   {
     id: "3",
@@ -49,7 +49,7 @@ const shoes = [
     reviews: 3700,
     likes: 4800,
     liked: false,
-    image: "https://images.unsplash.com/photo-1585386959984-a4155224a1a0", // Adidas style
+    image: "https://cdn.imgbin.com/11/7/18/imgbin-sneakers-air-force-1-adidas-nike-air-jordan-adidas-medhT9jvjjCNEsv0cuKzxLRwF.jpg", // Adidas style
   },
   {
     id: "4",
@@ -61,7 +61,7 @@ const shoes = [
     reviews: 1900,
     likes: 2600,
     liked: false,
-    image: "https://images.unsplash.com/photo-1582735683442-adf49bde0b28", // Converse
+    image: "https://cdn.imgbin.com/12/17/8/imgbin-chuck-taylor-all-stars-high-top-converse-sneakers-shoe-tow-mater-beJmvvG9dJDnphWh4R6Rt2ddw.jpg", // Converse
   },
   {
     id: "5",
@@ -73,7 +73,7 @@ const shoes = [
     reviews: 2200,
     likes: 3100,
     liked: false,
-    image: "https://images.unsplash.com/photo-1600185365927-3d804ecfc68f", // Puma
+    image: "https://cdn.imgbin.com/3/24/3/imgbin-nike-air-max-97-sneakers-shoe-huarache-air-max-97-Q3T5nNVXyjpJqzQbWVFNTaWjN.jpg", // Puma
   },
   {
     id: "6",
@@ -85,7 +85,7 @@ const shoes = [
     reviews: 1700,
     likes: 2100,
     liked: false,
-    image: "https://images.unsplash.com/photo-1600181956703-28dbe7ee563c", // Vans
+    image: "https://p7.hiclipart.com/preview/189/485/209/vans-old-skool-sneakers-shoe-converse-old-skool.jpg", // Vans
   },
 ];
 

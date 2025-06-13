@@ -27,6 +27,14 @@ export default function BottomNavBar({ activeTab, setActiveTab }: Props) {
         <Text style={[styles.navText, activeTab === "Explore" && styles.activeText]}>Explore</Text>
       </TouchableOpacity>
 
+    <TouchableOpacity style={styles.navItem}
+      onPress={() => router.push("/navbar/wishlist")}>
+      <View style={[styles.iconCircle, activeTab === "Wish" && styles.activeIcon]}>
+        <Feather name="heart" size={18} color={activeTab === "Wish" ? "#fff" : "#888"} />
+      </View>
+      <Text style={[styles.navText, activeTab === "Wish" && styles.activeText]}>Wishlist</Text>
+    </TouchableOpacity>
+    
       <TouchableOpacity style={styles.navItem} onPress={() => router.push("/navbar/cart")}>
         <View style={[styles.iconCircle, activeTab === "Cart" && styles.activeIcon]}>
           <MaterialCommunityIcons name="cart-outline" size={18} color={activeTab === "Cart" ? "#fff" : "#888"} />
