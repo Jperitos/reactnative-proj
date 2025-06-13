@@ -1,10 +1,19 @@
-import React from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
 import { useRouter } from "expo-router";
 import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 
 export default function SignupScreen() {
   const router = useRouter();
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   return (
     <View style={styles.container}>
@@ -19,16 +28,77 @@ export default function SignupScreen() {
 
       {/* Form */}
       <View style={styles.form}>
-        <TextInput style={styles.input} placeholder="Email" placeholderTextColor="#888" />
-        <TextInput style={styles.input} placeholder="Username" placeholderTextColor="#888" />
-        <TextInput style={styles.input} placeholder="Password" secureTextEntry placeholderTextColor="#888" />
-        <TextInput style={styles.input} placeholder="Confirm Password" secureTextEntry placeholderTextColor="#888" />
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          placeholderTextColor="#888"
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Username"
+          placeholderTextColor="#888"
+        />
 
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Sign Up</Text>
-        </TouchableOpacity>
+        <View style={styles.inputWrapper}>
+          <TextInput
+            style={styles.inputWithIcon}
+            placeholder="Password"
+            placeholderTextColor="#888"
+            secureTextEntry={!showPassword}
+          />
+          <TouchableOpacity
+            style={styles.icon}
+            onPress={() => setShowPassword(!showPassword)}
+          >
+            <FontAwesome
+              name={showPassword ? "eye" : "eye-slash"}
+              size={16}
+              color="#666"
+            />
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.inputWrapper}>
+          <TextInput
+            style={styles.inputWithIcon}
+            placeholder="Confirm Password"
+            placeholderTextColor="#888"
+            secureTextEntry={!showConfirmPassword}
+          />
+          <TouchableOpacity
+            style={styles.icon}
+            onPress={() => setShowConfirmPassword(!showConfirmPassword)}
+          >
+            <FontAwesome
+              name={showConfirmPassword ? "eye" : "eye-slash"}
+              size={16}
+              color="#666"
+            />
+          </TouchableOpacity>
+        </View>
+
+      <View style={styles.checkboxContainer}>
+      <TouchableOpacity
+        style={styles.checkbox}
+        onPress={() => setAcceptedTerms(!acceptedTerms)}
+      >
+        {acceptedTerms && <Text style={styles.checkMark}>✓</Text>}
+      </TouchableOpacity>
+      <Text style={styles.termsText}>
+        I accept the{" "}
+        <Text style={styles.link} onPress={() => router.push("/terms")}>
+          Terms & Conditions
+        </Text>
+      </Text>
+    </View>
+
+
+        <TouchableOpacity style={styles.button} onPress={() => router.push("/login")}>
+    <Text style={styles.buttonText}>Sign Up</Text>
+  </TouchableOpacity>
       </View>
 
+      {/* Divider */}
       <View style={styles.orContainer}>
         <View style={styles.line} />
         <Text style={styles.or}>or sign up with</Text>
@@ -62,7 +132,7 @@ export default function SignupScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#0d0d0d",
+    backgroundColor: "#000",
     padding: 24,
     justifyContent: "center",
   },
@@ -106,6 +176,58 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 3,
   },
+  inputWrapper: {
+    position: "relative",
+  },
+  inputWithIcon: {
+    backgroundColor: "#1c1c1c",
+    color: "#fff",
+    padding: 16,
+    paddingRight: 45,
+    borderRadius: 12,
+    fontSize: 16,
+    borderWidth: 1,
+    borderColor: "#2a2a2a",
+    shadowColor: "#000",
+    shadowOpacity: 0.3,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  icon: {
+    position: "absolute",
+    right: 16,
+    top: 18,
+  },
+  checkboxContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: -30,
+  },
+  checkbox: {
+    width: 15,
+    height: 15,
+    borderWidth: 1,
+    borderColor: "#888",
+    borderRadius: 4,
+    marginLeft: 5,
+    marginRight: 5,
+    marginTop: 42,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  checkMark: {
+  color: "#007bff",
+  fontSize: 15,
+  fontWeight: "bold",
+},
+
+  termsText: {
+    color: "#aaa",
+    fontSize: 13,
+    flexShrink: 1,
+    marginTop: 40,
+  },
   button: {
     backgroundColor: "#fff",
     paddingVertical: 16,
@@ -124,9 +246,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   or: {
-    color: "#aaa",
+    color: "#777",
     textAlign: "center",
-    marginVertical: 20,
+    marginVertical: 24,
   },
   orContainer: {
     flexDirection: "row",
@@ -139,7 +261,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#444",
     marginHorizontal: 8,
   },
-
   socials: {
     flexDirection: "row",
     justifyContent: "center",
@@ -151,7 +272,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     shadowColor: "#0000",
     shadowOpacity: 0.2,
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: { width: 2, height: 3 },
     shadowRadius: 4,
     elevation: 3,
   },
