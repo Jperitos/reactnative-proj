@@ -6,10 +6,14 @@ import {
   Image,
   Dimensions,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { FontAwesome } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+import CommentSection from "@/components/home/comment";
+import RecommendationSection from "@/components/explore/recomendation";
+
 const ShoeDetail = () => {
 const {
   name,
@@ -67,9 +71,10 @@ const renderStars = (rating: number = 0, reviews: number = 0) => {
 };
 
   return (
+    <ScrollView>
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <TouchableOpacity style={styles.backIcon} onPress={() => router.replace("/")}>
+        <TouchableOpacity style={styles.backIcon} onPress={() => router.push("/navbar/homepage")}>
   <FontAwesome name="chevron-left" size={12} color="#333" />
 </TouchableOpacity>
 
@@ -157,7 +162,17 @@ const renderStars = (rating: number = 0, reviews: number = 0) => {
   </TouchableOpacity>
 </View>
 
+<View style={{ paddingHorizontal: 10 }}>
+  <Text style={{ fontSize: 16, fontWeight: "bold", marginVertical: 10 }}>Comments</Text>
+  <CommentSection />
+</View>
+
+    <View style={{ padding: 20 }}>
+      <RecommendationSection />
     </View>
+
+    </View>
+    </ScrollView>
   );
 };
 
@@ -170,7 +185,6 @@ const styles = StyleSheet.create({
   position: "absolute",
   top: 40,
   left: 20,
-  backgroundColor: "#fff",
   borderRadius: 20,
   padding: 8,
   elevation: 4,
@@ -181,8 +195,7 @@ footer: {
   paddingHorizontal: 20,
   paddingVertical: 16,
   backgroundColor: "#fff",
-  borderTopWidth: 1,
-  borderTopColor: "#eee",
+
 },
 
 cartButton: {
