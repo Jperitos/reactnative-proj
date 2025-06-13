@@ -10,8 +10,11 @@ import {
   ScrollView,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
-import BottomNavBar from "@/components/bottomnavbar";
-
+import BottomNavBar from "@/components/explore/bottomnavbar";
+import PopularBrandSection from "@/components/explore/popbrand";
+import ExploreProductSection from "@/components/explore/product";
+import TopRatedShoesSection from "@/components/explore/toprated";
+import RecommendationSection from "@/components/explore/recomendation";
 const shoes = [
   { id: "1", name: "Nike Air Force 1", price: "$199.99", brand: "Nike", image: { uri: "https://images.unsplash.com/photo-1606813908511-06b97b0936f1" } },
   { id: "2", name: "NikeCourt Air", price: "$250.00", brand: "Nike", image: { uri: "https://images.unsplash.com/photo-1596464716121-7b7d9c3b153d" } },
@@ -38,42 +41,34 @@ export default function ExploreScreen() {
   );
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Explore</Text>
-
-      <View style={styles.searchSection}>
-        <TextInput
-          placeholder="Search for shoes"
-          style={styles.input}
-          value={searchQuery}
-          onChangeText={setSearchQuery}
-        />
-        <TouchableOpacity style={styles.searchButton}>
-          <FontAwesome name="search" size={14} color="#fff" />
-        </TouchableOpacity>
-      </View>
-
-
-      <FlatList
-        data={searchedShoes}
-        keyExtractor={(item) => item.id}
-        numColumns={2}
-        columnWrapperStyle={{ justifyContent: "space-between" }}
-        contentContainerStyle={{ paddingBottom: 100 }}
-        showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => (
-          <View style={styles.card}>
-            <Image source={item.image} style={styles.cardImage} />
-            <Text style={styles.cardTitle}>{item.name}</Text>
-            <Text style={styles.cardPrice}>{item.price}</Text>
+    <View style={styles.wrapper}>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <View style={styles.container}>
+          <Text style={styles.title}>Explore</Text>
+          <View style={styles.searchSection}>
+            <TextInput
+              placeholder="Search for shoes"
+              style={styles.input}
+              value={searchQuery}
+              onChangeText={setSearchQuery}
+            />
+            <TouchableOpacity style={styles.searchButton}>
+              <FontAwesome name="search" size={14} color="#fff" />
+            </TouchableOpacity>
           </View>
-        )}
-      />
 
-      <BottomNavBar activeTab={activeTab} setActiveTab={setActiveTab}/>
+          <PopularBrandSection />
+          <ExploreProductSection />
+          <TopRatedShoesSection />
+          <RecommendationSection />
+        </View>
+      </ScrollView>
+
+      <BottomNavBar activeTab={activeTab} setActiveTab={setActiveTab} />
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#fff", padding: 20 },
@@ -92,6 +87,14 @@ const styles = StyleSheet.create({
     fontSize: 13.5,
     color: "#555",
   },
+  wrapper: {
+  flex: 1,
+  backgroundColor: "#fff",
+},
+scrollContainer: {
+  paddingBottom: 80, 
+},
+
   searchButton: {
     backgroundColor: "#000",
     padding: 12,
@@ -126,4 +129,40 @@ const styles = StyleSheet.create({
   },
   cardTitle: { fontWeight: "bold", marginBottom: 5 },
   cardPrice: { color: "#333" },
+  latest: {
+  fontWeight: "bold",
+  fontSize: 20,
+  },
+  popularBrandTitle: {
+  fontSize: 12,
+  fontWeight: "bold",
+  color: "#555",
+  marginBottom: 10,
+},
+
+brandScroll: {
+  marginBottom: 15,
+},
+
+brandCard: {
+  backgroundColor: "#fff",
+  padding: 10,
+  borderRadius: 12,
+  marginRight: 10,
+  shadowColor: "#000",
+  shadowOffset: { width: 0, height: 1 },
+  shadowOpacity: 0.1,
+  shadowRadius: 2,
+  elevation: 3,
+  width: 78,
+  height: 78,
+  justifyContent: "center",
+  alignItems: "center",
+},
+
+brandImage: {
+  width: 40,
+  height: 40,
+  resizeMode: "contain",
+},
 });

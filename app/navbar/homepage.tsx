@@ -12,65 +12,98 @@ import {
 import { FontAwesome } from "@expo/vector-icons";
 import { Feather, MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import BottomNavBar from "@/components/bottomnavbar";
+import BottomNavBar from "@/components/explore/bottomnavbar";
+import ShoeCard from "@/components/home/shoecard";
 const shoes = [
   {
     id: "1",
     name: "Nike Air Force 1",
     price: "$199.99",
     brand: "Nike",
-    image: require("../../assets/images/shoe2.png"),
+    rating: 4,
+    sold: "85k",
+    reviews: 3200,
+    likes: 5400,
+    liked: false,
+    image: "https://cdn.freebiesupply.com/images/large/2x/air-jordan-logo-png-transparent.png", // Nike AF1
   },
   {
     id: "2",
     name: "NikeCourt Air",
     price: "$250.00",
     brand: "Nike",
-    image: require("../../assets/images/shoe3.png"),
+    rating: 5,
+    sold: "62k",
+    reviews: 4100,
+    likes: 6200,
+    liked: false,
+    image: "https://images.unsplash.com/photo-1606813902914-1c0047b9aa4c", // NikeCourt
   },
   {
     id: "3",
     name: "Adidas Air Force",
     price: "$450.99",
-    brand: "Addidas",
-    image: require("../../assets/images/shoe4.png"),
+    brand: "Adidas",
+    rating: 4.5,
+    sold: "70k",
+    reviews: 3700,
+    likes: 4800,
+    liked: false,
+    image: "https://images.unsplash.com/photo-1585386959984-a4155224a1a0", // Adidas style
   },
   {
     id: "4",
     name: "Converse Classic",
     price: "$330.00",
     brand: "Converse",
-    image: require("../../assets/images/shoe5.png"),
+    rating: 3,
+    sold: "40k",
+    reviews: 1900,
+    likes: 2600,
+    liked: false,
+    image: "https://images.unsplash.com/photo-1582735683442-adf49bde0b28", // Converse
   },
   {
     id: "5",
     name: "Puma Air Max",
     price: "$299.99",
     brand: "Puma",
-    image: require("../../assets/images/shoe1.png"),
+    rating: 4,
+    sold: "50k",
+    reviews: 2200,
+    likes: 3100,
+    liked: false,
+    image: "https://images.unsplash.com/photo-1600185365927-3d804ecfc68f", // Puma
   },
   {
     id: "6",
     name: "Vans Blazer",
     price: "$189.00",
     brand: "Vans",
-    image: require("../../assets/images/shoe4.png"),
+    rating: 4,
+    sold: "30k",
+    reviews: 1700,
+    likes: 2100,
+    liked: false,
+    image: "https://images.unsplash.com/photo-1600181956703-28dbe7ee563c", // Vans
   },
 ];
 
-const categories = ["All", "Nike", "Addidas", "Converse", "Puma", "Vans", "Under Armor"];
+const categories = ["All", "Nike", "Addidas", "Converse", "Puma", "Vans", "UnderArmor"];
 
 export default function HomeScreen() {
   const [activeTab, setActiveTab] = useState("Home");
   const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [shoeData, setShoeData] = useState(shoes);
 
 
-  const filteredShoes =
-  selectedCategory === "All"
-    ? shoes
-    : shoes.filter((shoe) => shoe.brand === selectedCategory);
+
+  const filteredShoes = selectedCategory === "All"
+  ? shoeData
+  : shoeData.filter((shoe) => shoe.brand === selectedCategory);
+
 
 const searchedShoes = filteredShoes.filter((shoe) =>
   shoe.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -129,27 +162,22 @@ const searchedShoes = filteredShoes.filter((shoe) =>
   );
 
   return (
-    <View style={styles.container}>
-      <FlatList
-        data={filteredShoes}
-        keyExtractor={(item) => item.id}
-        numColumns={2}
-        columnWrapperStyle={{ justifyContent: "space-between" }}
-        contentContainerStyle={{ paddingBottom: 100 }}
-        ListHeaderComponent={renderHeader}
-        showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => (
-          <View style={styles.card}>
-            <Image source={item.image} style={styles.cardImage} />
-            <Text style={styles.cardTitle}>{item.name}</Text>
-            <Text style={styles.cardPrice}>{item.price}</Text>
-          </View>
-        )}
-      />
+  <View style={styles.container}>
+    <FlatList
+      data={searchedShoes}
+      keyExtractor={(item) => item.id}
+      numColumns={2}
+      columnWrapperStyle={{ justifyContent: "space-between" }}
+      contentContainerStyle={{ paddingBottom: 100 }}
+      ListHeaderComponent={renderHeader}
+      showsVerticalScrollIndicator={false}
+      renderItem={({ item }) => <ShoeCard item={item} />}
+    />
 
-      <BottomNavBar activeTab={activeTab} setActiveTab={setActiveTab}/>
-    </View>
-  );
+    <BottomNavBar activeTab={activeTab} setActiveTab={setActiveTab} />
+  </View>
+);
+
 }
 
 const styles = StyleSheet.create({

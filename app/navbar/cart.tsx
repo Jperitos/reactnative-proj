@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
-import BottomNavBar from "@/components/bottomnavbar";
+import BottomNavBar from "@/components/explore/bottomnavbar";
 import { useState } from "react";
 
 // Define type for cart item

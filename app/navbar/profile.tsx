@@ -9,7 +9,7 @@ import {
   Switch,
 } from "react-native";
 import { Ionicons, Feather, MaterialIcons } from "@expo/vector-icons";
-import BottomNavBar from "@/components/bottomnavbar";
+import BottomNavBar from "@/components/explore/bottomnavbar";
 import { router } from "expo-router";
 
 export default function ProfileSettings() {
