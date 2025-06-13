@@ -199,7 +199,7 @@ footer: {
 },
 
 cartButton: {
-  backgroundColor: "#333",
+  backgroundColor: "#000",
   paddingVertical: 14,
   borderRadius: 12,
   alignItems: "center",

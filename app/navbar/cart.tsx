@@ -1,75 +1,145 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
   StyleSheet,
-  FlatList,
   Image,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
+import CartItemCard from "@/components/carts/cartcard";
 import BottomNavBar from "@/components/explore/bottomnavbar";
-import { useState } from "react";
 
-// Define type for cart item
 interface CartItem {
   id: string;
   name: string;
-  price: string;
+  category: string;
+  size: number;
+  color: string;
+  price: number;
   quantity: number;
   image: { uri: string };
 }
 
-const cartItems: CartItem[] = [
+const initialCartItems: CartItem[] = [
   {
     id: "1",
     name: "Nike Air Force 1",
-    price: "$199.99",
+    category: "Sneakers",
+    size: 9,
+    color: "#f54242",
+    price: 199.99,
     quantity: 1,
     image: { uri: "https://i.imgur.com/1Wv1B3f.png" },
   },
   {
     id: "2",
     name: "Converse Classic",
-    price: "$330.00",
+    category: "Canvas",
+    size: 8,
+    color: "#4287f5",
+    price: 330.0,
     quantity: 2,
     image: { uri: "https://i.imgur.com/X1FzC6b.png" },
   },
+  {
+    id: "3",
+    name: "Adidas Ultraboost",
+    category: "Running",
+    size: 10,
+    color: "#000000",
+    price: 180.0,
+    quantity: 1,
+    image: { uri: "https://i.imgur.com/fYONwQl.png" },
+  },
+  {
+    id: "4",
+    name: "Puma RS-X",
+    category: "Lifestyle",
+    size: 9,
+    color: "#4CAF50",
+    price: 150.0,
+    quantity: 1,
+    image: { uri: "https://i.imgur.com/8Km9tLL.png" },
+  },
+  {
+    id: "5",
+    name: "Vans Old Skool",
+    category: "Skate",
+    size: 8,
+    color: "#FF9800",
+    price: 75.0,
+    quantity: 2,
+    image: { uri: "https://i.imgur.com/VZ2gTsd.png" },
+  },
+  {
+    id: "6",
+    name: "New Balance 574",
+    category: "Casual",
+    size: 10,
+    color: "#607D8B",
+    price: 90.0,
+    quantity: 1,
+    image: { uri: "https://i.imgur.com/IkCzDQx.png" },
+  },
 ];
 
+
 export default function Cart() {
-const [activeTab, setActiveTab] = useState("Cart");
-  const renderItem = ({ item }: { item: CartItem }) => (
-    <View style={styles.card}>
-      <Image source={item.image} style={styles.itemImage} />
-      <View style={styles.itemDetails}>
-        <Text style={styles.itemName}>{item.name}</Text>
-        <Text style={styles.itemPrice}>{item.price}</Text>
-        <Text style={styles.itemQty}>Qty: {item.quantity}</Text>
-      </View>
-      <TouchableOpacity>
-        <Feather name="trash-2" size={20} color="#888" />
-      </TouchableOpacity>
-    </View>
+  const [cartItems, setCartItems] = useState(initialCartItems);
+  const [activeTab, setActiveTab] = useState("cart");
+
+  const removeItem = (id: string) => {
+    setCartItems((prev) => prev.filter((item) => item.id !== id));
+  };
+
+  const updateQuantity = (id: string, change: number) => {
+    const updated = cartItems.map((item) =>
+      item.id === id
+        ? { ...item, quantity: Math.max(1, item.quantity + change) }
+        : item
+    );
+    setCartItems(updated);
+  };
+
+  const totalAmount = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
   );
 
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>My Cart</Text>
-      <FlatList
-        data={cartItems}
-        keyExtractor={(item) => item.id}
-        renderItem={renderItem}
-        contentContainerStyle={styles.list}
-      />
-      <View style={styles.footer}>
-        <Text style={styles.totalText}>Total: $859.99</Text>
-        <TouchableOpacity style={styles.checkoutBtn}>
-          <Text style={styles.checkoutText}>Checkout</Text>
-        </TouchableOpacity>
-      </View>
+      <ScrollView contentContainerStyle={styles.scrollContent}>
+        <View style={styles.header}>
+          <Feather name="shopping-cart" size={24} color="black" />
+          <Text style={styles.heading}>My Cart</Text>
+        </View>
 
-      <BottomNavBar  activeTab={activeTab} setActiveTab={setActiveTab}/>
+        <View style={styles.list}>
+          {cartItems.map((item) => (
+            <CartItemCard
+              key={item.id}
+              item={item}
+              onQuantityChange={updateQuantity}
+              onRemove={removeItem}
+            />
+          ))}
+        </View>
+
+      </ScrollView>
+
+        <View style={styles.footer}>
+          <View style={styles.footerRow}>
+            <Text style={styles.totalLabel}>Total:</Text>
+            <Text style={styles.totalValue}>${totalAmount.toFixed(2)}</Text>
+          </View>
+          <TouchableOpacity style={styles.checkoutBtn}>
+            <Text style={styles.checkoutText}>Place Order</Text>
+          </TouchableOpacity>
+        </View>
+
+      <BottomNavBar activeTab={activeTab} setActiveTab={setActiveTab} />
     </View>
   );
 }
@@ -78,24 +148,36 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    paddingHorizontal: 20,
-    paddingTop: 50,
+    paddingTop: 20,
   },
-  heading: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 25,
-  },
-  list: {
-    paddingBottom: 100,
-  },
-  card: {
+  header: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#f7f7f7",
-    borderRadius: 12,
-    padding: 15,
+    paddingHorizontal: 20,
+    marginBottom: 10,
+  },
+  heading: {
+    fontSize: 22,
+    fontWeight: "600",
+    marginLeft: 10,
+  },
+  list: {
+    paddingHorizontal: 8,
+    paddingBottom: 130,
+  },
+  scrollContent: {
+  paddingHorizontal: 20,
+  paddingBottom: 160,
+  paddingTop: 20,
+},
+  card: {
+    flexDirection: "row",
+    backgroundColor: "#f2f2f2",
+    borderRadius: 16,
+    width: "100%",
+    padding: 12,
     marginBottom: 15,
+    alignItems: "center",
   },
   itemImage: {
     width: 60,
@@ -107,41 +189,81 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   itemName: {
+    fontSize: 16,
     fontWeight: "bold",
-    fontSize: 15,
   },
-  itemPrice: {
+  itemCategory: {
+    fontSize: 13,
     color: "#666",
+  },
+  itemMetaRow: {
+    flexDirection: "row",
+    alignItems: "center",
     marginTop: 4,
   },
-  itemQty: {
-    color: "#aaa",
-    marginTop: 2,
-    fontSize: 13,
+  metaText: {
+    fontSize: 12,
+    color: "#555",
+    marginRight: 10,
+  },
+  colorCircle: {
+    width: 14,
+    height: 14,
+    borderRadius: 7,
+    borderWidth: 1,
+    borderColor: "#ccc",
+  },
+  qtyRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 8,
+  },
+  qtyButton: {
+    backgroundColor: "#ddd",
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 2,
+  },
+  qtyText: {
+    fontSize: 16,
+    fontWeight: "600",
+  },
+  qtyValue: {
+    marginHorizontal: 10,
+    fontSize: 16,
   },
   footer: {
     position: "absolute",
-    bottom: 20,
-    left: 20,
-    right: 20,
-    backgroundColor: "#000",
-    borderRadius: 12,
+    bottom: 60,
+    left: 0,
+    right: 0,
     padding: 20,
+    backgroundColor: "#fff",
+    borderTopColor: "#eee",
+    borderTopWidth: 1,
   },
-  totalText: {
-    color: "#fff",
+  footerRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 15,
+  },
+  totalLabel: {
     fontSize: 16,
-    marginBottom: 10,
+    fontWeight: "500",
+  },
+  totalValue: {
+    fontSize: 18,
+    fontWeight: "bold",
   },
   checkoutBtn: {
-    backgroundColor: "#fff",
-    paddingVertical: 12,
-    borderRadius: 8,
+    backgroundColor: "#000",
+    paddingVertical: 14,
+    borderRadius: 10,
     alignItems: "center",
   },
   checkoutText: {
-    fontWeight: "bold",
-    color: "#000",
+    color: "#fff",
     fontSize: 16,
+    fontWeight: "600",
   },
 });
