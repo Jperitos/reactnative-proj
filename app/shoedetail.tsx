@@ -71,7 +71,7 @@ const renderStars = (rating: number = 0, reviews: number = 0) => {
 };
 
   return (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
     <View style={styles.container}>
       <View style={styles.imageContainer}>
         <TouchableOpacity style={styles.backIcon} onPress={() => router.push("/navbar/homepage")}>
@@ -240,10 +240,11 @@ likeCount: {
   imageContainer: {
     position: "relative",
     alignItems: "center",
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#fff",
+    borderColor: "#f4f4f5"
   },
   image: {
-    width: width,
+    width: "95%",
     height: 400,
     resizeMode: "contain",
   },
