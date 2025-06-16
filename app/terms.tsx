@@ -58,7 +58,7 @@ export default function TermsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#000",
+    backgroundColor: "#fff",
     padding: 24,
     paddingTop: 60,
   },
@@ -68,11 +68,11 @@ const styles = StyleSheet.create({
     left: 20,
   },
   backText: {
-    color: "#aaa",
+    color: "#888",
     fontSize: 16,
   },
   title: {
-    color: "#fff",
+    color: "#000",
     fontSize: 28,
     fontWeight: "bold",
     textAlign: "center",
@@ -83,14 +83,14 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   sectionTitle: {
-    color: "#fff",
+    color: "#000",
     fontSize: 15,
     fontWeight: "bold",
     marginTop: 16,
     marginBottom: 4,
   },
   paragraph: {
-    color: "#ccc",
+    color: "#000",
     fontSize: 12,
     lineHeight: 20,
     marginBottom: 10,

@@ -42,7 +42,7 @@ export default function ExploreScreen() {
 
   return (
     <View style={styles.wrapper}>
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
+      <ScrollView contentContainerStyle={styles.scrollContainer}  showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           <Text style={styles.title}>Explore</Text>
           <View style={styles.searchSection}>

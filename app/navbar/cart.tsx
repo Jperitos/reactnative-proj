@@ -10,6 +10,7 @@ import {
 import { Feather } from "@expo/vector-icons";
 import CartItemCard from "@/components/carts/cartcard";
 import BottomNavBar from "@/components/explore/bottomnavbar";
+import { useRouter } from "expo-router";
 
 interface CartItem {
   id: string;
@@ -31,7 +32,7 @@ const initialCartItems: CartItem[] = [
     color: "#f54242",
     price: 199.99,
     quantity: 1,
-    image: { uri: "https://i.imgur.com/1Wv1B3f.png" },
+    image: { uri: "https://www.pngkey.com/png/full/204-2046997_air-force-1-png-nike-air-force-1.png" },
   },
   {
     id: "2",
@@ -41,7 +42,7 @@ const initialCartItems: CartItem[] = [
     color: "#4287f5",
     price: 330.0,
     quantity: 2,
-    image: { uri: "https://i.imgur.com/X1FzC6b.png" },
+    image: { uri: "https://www.pngkey.com/png/full/204-2046997_air-force-1-png-nike-air-force-1.png" },
   },
   {
     id: "3",
@@ -51,7 +52,7 @@ const initialCartItems: CartItem[] = [
     color: "#000000",
     price: 180.0,
     quantity: 1,
-    image: { uri: "https://i.imgur.com/fYONwQl.png" },
+    image: { uri: "https://images.stockx.com/images/Nike-Court-Air-Zoom-Vapor-Pro-3-Premium-HC-White-Midnight-Navy.jpg?fit=fill&bg=FFFFFF&w=576&h=384&q=41&dpr=3&trim=color&updated_at=1749674955" },
   },
   {
     id: "4",
@@ -61,7 +62,7 @@ const initialCartItems: CartItem[] = [
     color: "#4CAF50",
     price: 150.0,
     quantity: 1,
-    image: { uri: "https://i.imgur.com/8Km9tLL.png" },
+    image: { uri: "https://images.stockx.com/images/Nike-Court-Air-Zoom-Vapor-Pro-3-Premium-HC-White-Midnight-Navy.jpg?fit=fill&bg=FFFFFF&w=576&h=384&q=41&dpr=3&trim=color&updated_at=1749674955" },
   },
   {
     id: "5",
@@ -71,7 +72,7 @@ const initialCartItems: CartItem[] = [
     color: "#FF9800",
     price: 75.0,
     quantity: 2,
-    image: { uri: "https://i.imgur.com/VZ2gTsd.png" },
+    image: { uri: "https://images.stockx.com/images/Nike-Court-Air-Zoom-Vapor-Pro-3-Premium-HC-White-Midnight-Navy.jpg?fit=fill&bg=FFFFFF&w=576&h=384&q=41&dpr=3&trim=color&updated_at=1749674955" },
   },
   {
     id: "6",
@@ -81,14 +82,16 @@ const initialCartItems: CartItem[] = [
     color: "#607D8B",
     price: 90.0,
     quantity: 1,
-    image: { uri: "https://i.imgur.com/IkCzDQx.png" },
+    image: { uri: "https://images.stockx.com/images/Nike-Court-Air-Zoom-Vapor-Pro-3-Premium-HC-White-Midnight-Navy.jpg?fit=fill&bg=FFFFFF&w=576&h=384&q=41&dpr=3&trim=color&updated_at=1749674955" },
   },
 ];
 
 
 export default function Cart() {
   const [cartItems, setCartItems] = useState(initialCartItems);
-  const [activeTab, setActiveTab] = useState("cart");
+  const [activeTab, setActiveTab] = useState("Cart");
+  const router = useRouter();
+
 
   const removeItem = (id: string) => {
     setCartItems((prev) => prev.filter((item) => item.id !== id));
@@ -110,11 +113,18 @@ export default function Cart() {
 
   return (
     <View style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollContent}>
+      <ScrollView contentContainerStyle={styles.scrollContent}
+       showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
-          <Feather name="shopping-cart" size={24} color="black" />
+           <Feather name="shopping-cart" size={20} color="#333"/>
           <Text style={styles.heading}>My Cart</Text>
+
+          <TouchableOpacity style={styles.wishContainer} onPress={() => router.push("/navbar/wishlist")}>
+          <Text style={styles.wish}>Wishlist</Text>
+          </TouchableOpacity>
+
         </View>
+
 
         <View style={styles.list}>
           {cartItems.map((item) => (
@@ -148,18 +158,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    paddingTop: 20,
+    paddingTop: 10,
   },
   header: {
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "space-between",
     paddingHorizontal: 20,
+    width: "105%",
     marginBottom: 10,
   },
   heading: {
     fontSize: 22,
-    fontWeight: "600",
-    marginLeft: 10,
+    fontWeight: "bold",
   },
   list: {
     paddingHorizontal: 8,
@@ -266,4 +277,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "600",
   },
+  wishContainer: {
+  flexDirection: "row",
+  alignItems: "center",
+  gap: 6, 
+},
+wish: {
+  fontSize: 14,
+  color: "#f54242",
+  fontWeight: "500",
+},
+
 });

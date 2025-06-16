@@ -1,7 +1,9 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity, Dimensions, Platform, ScrollView } from "react-native";
 import { Link } from "expo-router";
+import { useRouter } from "expo-router";
 
 const { width, height } = Dimensions.get("window");
+const router = useRouter();
 
 export default function Index() {
   return (
@@ -10,20 +12,27 @@ export default function Index() {
         {/* Top Left Logo */}
         <View style={styles.logoContainer}>
           <Text style={styles.logoText}>SoleCraft</Text>
+           <TouchableOpacity onPress={() => router.push("/signup")}>
+          <Image
+            source={require("../assets/images/logo.png")}
+            style={styles.logoImage}/>
+</TouchableOpacity>
         </View>
 
         {/* Shoe Image */}
-        <Image source={require("../assets/images/shoe4.png")} style={styles.shoeImage} resizeMode="contain" />
+        <Image source={require("../assets/images/jordan.png")} style={styles.shoeImage} resizeMode="contain" />
 
         {/* Text Section */}
-        <View style={styles.textContainer}>
-          <Text style={styles.title}>
-            Comfort is{"\n"}
-            <Text style={styles.bold}>everything</Text>
-          </Text>
-          <Text style={styles.subtitle}>Find the best shoes for comfort in your daily activities</Text>
-        </View>
-
+       <View style={styles.textContainer}>
+        <Text style={styles.title}>
+          Comfort is{"\n"}
+          <Text style={styles.bold}>everything</Text>
+        </Text>
+        <Text style={styles.subtitle}>
+          Find the best shoes for comfort in your daily activities.{"\n"}
+          Designed for movement, built for style into confidence.
+        </Text>
+      </View>
         {/* Get Started Button */}
         <Link href="/login" asChild>
           <TouchableOpacity style={styles.button}>
@@ -38,7 +47,7 @@ export default function Index() {
 const styles = StyleSheet.create({
   scrollContainer: {
     flexGrow: 1,
-    backgroundColor: "#000",
+    backgroundColor: "#fff",
   },
   container: {
     flex: 1,
@@ -49,26 +58,33 @@ const styles = StyleSheet.create({
     marginTop: -50,
     paddingHorizontal: 24,
   },
-  logoContainer: {
-    position: "absolute",
-    top: Platform.OS === "android" ? 50 : 70,
-    left: 24,
-    marginTop: 10,
-    zIndex: 10,
-  },
-  logoText: {
-    color: "#fff",
-    fontSize: 20,
-    fontWeight: "bold",
-    letterSpacing: 1,
-  },
-  shoeImage: {
-    width: width * 1.9,
-    height: height * 0.7,
-    transform: [{ rotate: "-30deg" }],
-    marginRight: 70,
-    marginTop: -80,
-  },
+ logoContainer: {
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "space-between",
+  width: "110%",
+  paddingHorizontal: 10,
+},
+logoText: {
+  fontSize: 24,
+  fontWeight: "bold",
+  color: "#000",
+},
+logoImage: {
+  width: 50,
+  height: 50,
+  resizeMode: "contain",
+},
+
+shoeImage: {
+  width: width * 1.6,       
+  height: height * 0.6,    
+  transform: [{ rotate: "-30deg" }],
+  marginRight: 100,
+  marginTop: -50,
+
+},
+
   textContainer: {
     alignItems: "center",
     marginTop: -80,
@@ -76,22 +92,22 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: width * 0.08,
-    color: "#fff",
+    color: "#000",
     textAlign: "center",
-    fontWeight: "300",
+    fontWeight: "500",
   },
   bold: {
-    fontWeight: "700",
+    fontWeight: "800",
   },
   subtitle: {
     fontSize: width * 0.035,
-    color: "#ccc",
+    color: "#000f",
     textAlign: "center",
     marginTop: 12,
     lineHeight: 20,
   },
   button: {
-    backgroundColor: "#fff",
+    backgroundColor: "#000",
     paddingVertical: 14,
     paddingHorizontal: 60,
     borderRadius: 12,
@@ -99,7 +115,7 @@ const styles = StyleSheet.create({
     marginBottom: 50,
   },
   buttonText: {
-    color: "#000",
+    color: "#fff",
     fontWeight: "bold",
     fontSize: 16,
   },

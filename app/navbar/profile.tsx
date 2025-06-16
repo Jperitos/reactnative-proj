@@ -7,6 +7,7 @@ import {
   Image,
   ScrollView,
   Switch,
+  Alert,
 } from "react-native";
 import { Ionicons, Feather, MaterialIcons } from "@expo/vector-icons";
 import BottomNavBar from "@/components/explore/bottomnavbar";
@@ -18,9 +19,14 @@ export default function ProfileSettings() {
   const [faceIdEnabled, setFaceIdEnabled] = useState(true);
   const [activeTab, setActiveTab] = useState("Profile");
 
+  const toggleDarkMode = () => {
+    setDarkMode((prev) => !prev);
+    Alert.alert("Theme", darkMode ? "Switched to Light Mode" : "Switched to Dark Mode");
+  };
+
   return (
     <View style={{ flex: 1 }}>
-      <ScrollView contentContainerStyle={styles.scrollContent}>
+      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
         <View style={styles.profileHeader}>
           <Image
             source={{ uri: "https://i.imgur.com/0y8Ftya.png" }}
@@ -32,64 +38,101 @@ export default function ProfileSettings() {
 
         {/* Account Section */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Account</Text>
-          <TouchableOpacity style={styles.item}>
-            <Feather name="user" size={18} color="#444" />
+          <TouchableOpacity style={styles.item} onPress={() => Alert.alert("Edit Profile")}>
+            <Feather name="user" size={16} color="#555" />
             <Text style={styles.itemText}>Edit Profile</Text>
-            <Feather name="chevron-right" size={18} color="#ccc" />
+            <Feather name="chevron-right" size={18} color="#bbb" />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.item}>
-            <Feather name="lock" size={18} color="#444" />
+
+          <TouchableOpacity style={styles.item} onPress={() => Alert.alert("Change Password")}>
+            <Feather name="lock" size={16} color="#555" />
             <Text style={styles.itemText}>Change Password</Text>
-            <Feather name="chevron-right" size={18} color="#ccc" />
+            <Feather name="chevron-right" size={18} color="#bbb" />
           </TouchableOpacity>
         </View>
 
-        {/* Preferences */}
+        {/* Preferences Section */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Preferences</Text>
           <View style={styles.item}>
-            <Ionicons name="notifications-outline" size={18} color="#444" />
+            <Ionicons name="notifications-outline" size={16} color="#555" />
             <Text style={styles.itemText}>Push Notifications</Text>
-            <Switch
-              value={notificationsEnabled}
-              onValueChange={setNotificationsEnabled}
-            />
+            <Switch value={notificationsEnabled} onValueChange={setNotificationsEnabled} />
           </View>
+
           <View style={styles.item}>
-            <Ionicons name="moon-outline" size={18} color="#444" />
+            <Ionicons name="moon-outline" size={16} color="#555" />
             <Text style={styles.itemText}>Dark Mode</Text>
-            <Switch value={darkMode} onValueChange={setDarkMode} />
+            <Switch value={darkMode} onValueChange={toggleDarkMode} />
           </View>
+
+          <TouchableOpacity style={styles.item} onPress={() => Alert.alert("Language Settings")}>
+            <Ionicons name="globe-outline" size={16} color="#555" />
+            <Text style={styles.itemText}>Language</Text>
+            <Feather name="chevron-right" size={18} color="#bbb" />
+          </TouchableOpacity>
         </View>
 
-        {/* Security */}
+        {/* Security Section */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Security</Text>
           <View style={styles.item}>
-            <MaterialIcons name="security" size={18} color="#444" />
+            <MaterialIcons name="security" size={16} color="#555" />
             <Text style={styles.itemText}>Face ID</Text>
             <Switch value={faceIdEnabled} onValueChange={setFaceIdEnabled} />
           </View>
-          <TouchableOpacity style={styles.item}>
-            <Feather name="shield" size={18} color="#444" />
+
+          <TouchableOpacity style={styles.item} onPress={() => Alert.alert("2FA Settings")}>
+            <Feather name="shield" size={16} color="#555" />
             <Text style={styles.itemText}>2-Factor Authentication</Text>
-            <Feather name="chevron-right" size={18} color="#ccc" />
+            <Feather name="chevron-right" size={18} color="#bbb" />
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.item} onPress={() => Alert.alert("Privacy Settings")}>
+            <Feather name="lock" size={16} color="#555" />
+            <Text style={styles.itemText}>Privacy Settings</Text>
+            <Feather name="chevron-right" size={18} color="#bbb" />
           </TouchableOpacity>
         </View>
 
-        {/* Support */}
+        {/* Support Section */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Support</Text>
-          <TouchableOpacity style={styles.item}>
-            <Feather name="help-circle" size={18} color="#444" />
+          <TouchableOpacity style={styles.item} onPress={() => Alert.alert("Help Center")}>
+            <Feather name="help-circle" size={16} color="#555" />
             <Text style={styles.itemText}>Help Center</Text>
-            <Feather name="chevron-right" size={18} color="#ccc" />
+            <Feather name="chevron-right" size={18} color="#bbb" />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.item}>
-            <Feather name="mail" size={18} color="#444" />
+
+          <TouchableOpacity style={styles.item} onPress={() => Alert.alert("Contact Us")}>
+            <Feather name="mail" size={16} color="#555" />
             <Text style={styles.itemText}>Contact Us</Text>
-            <Feather name="chevron-right" size={18} color="#ccc" />
+            <Feather name="chevron-right" size={18} color="#bbb" />
+          </TouchableOpacity>
+        </View>
+
+        {/* Legal Info Section */}
+        <View style={styles.section}>
+          <TouchableOpacity style={styles.item} onPress={() => Alert.alert("Terms of Service")}>
+            <Feather name="file-text" size={16} color="#555" />
+            <Text style={styles.itemText}>Terms of Service</Text>
+            <Feather name="chevron-right" size={18} color="#bbb" />
+          </TouchableOpacity>
+
+          <View style={[styles.item]}>
+            <Feather name="info" size={16} color="#555" />
+            <Text style={styles.itemText}>App Version</Text>
+            <Text style={{ fontSize: 13, color: "#999" }}>v1.0.0</Text>
+          </View>
+
+          <TouchableOpacity
+            style={[styles.item, { borderBottomWidth: 0 }]}
+            onPress={() =>
+              Alert.alert("Confirm Deletion", "Are you sure you want to delete your account?", [
+                { text: "Cancel", style: "cancel" },
+                { text: "Delete", style: "destructive", onPress: () => Alert.alert("Account Deleted") },
+              ])
+            }
+          >
+            <Feather name="trash-2" size={16} color="#e74c3c" />
+            <Text style={[styles.itemText, { color: "#e74c3c" }]}>Delete Account</Text>
           </TouchableOpacity>
         </View>
 
@@ -97,13 +140,11 @@ export default function ProfileSettings() {
         <View style={styles.section}>
           <TouchableOpacity
             style={styles.item}
-            onPress={() => { router.replace("/");
-            }}
-            >
-  <Feather name="log-out" size={18} color="#e74c3c" />
-  <Text style={[styles.itemText, { color: "#e74c3c" }]}>Logout</Text>
-</TouchableOpacity>
-
+            onPress={() => router.replace("/")}
+          >
+            <Feather name="log-out" size={16} color="#e74c3c" />
+            <Text style={[styles.itemText, { color: "#e74c3c" }]}>Logout</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
 
@@ -116,13 +157,13 @@ export default function ProfileSettings() {
 
 const styles = StyleSheet.create({
   scrollContent: {
-    paddingBottom: 120,
-    backgroundColor: "#F9F9F9",
+    paddingBottom: 60,
+    backgroundColor: "#F4F4F5",
   },
   profileHeader: {
     alignItems: "center",
-    paddingVertical: 40,
-    backgroundColor: "#fff",
+    paddingVertical: 32,
+    backgroundColor: "#f4f4f5",
     marginBottom: 10,
   },
   avatar: {
@@ -130,38 +171,37 @@ const styles = StyleSheet.create({
     height: 80,
     borderRadius: 40,
     marginBottom: 12,
+    marginTop: 20,
   },
   name: {
     fontSize: 18,
     fontWeight: "600",
+    color: "#111",
   },
   email: {
     fontSize: 14,
-    color: "#888",
+    color: "#777",
   },
   section: {
-    marginBottom: 10,
+    marginBottom: 12,
     backgroundColor: "#fff",
-  },
-  sectionTitle: {
-    fontSize: 14,
-    fontWeight: "bold",
-    color: "#888",
-    padding: 15,
+    borderRadius: 10,
+    marginHorizontal: 16,
+    overflow: "hidden",
   },
   item: {
     flexDirection: "row",
     alignItems: "center",
-    paddingVertical: 15,
-    paddingHorizontal: 20,
-    borderTopWidth: 1,
-    borderTopColor: "#f0f0f0",
-    justifyContent: "space-between",
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    borderBottomColor: "#eee",
+    borderBottomWidth: 1,
   },
   itemText: {
     flex: 1,
-    marginLeft: 15,
-    fontSize: 16,
+    marginLeft: 12,
+    fontSize: 15,
+    color: "#333",
   },
   navContainer: {
     position: "absolute",

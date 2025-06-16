@@ -130,7 +130,7 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#000",
+    backgroundColor: "#fff",
     padding: 24,
     justifyContent: "center",
   },
@@ -141,18 +141,18 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   backText: {
-    color: "#aaa",
+    color: "#888",
     fontSize: 16,
   },
   logo: {
-    color: "#fff",
+    color: "#000",
     fontSize: 32,
     fontWeight: "bold",
     textAlign: "center",
     marginBottom: 6,
   },
   header: {
-    color: "#bbb",
+    color: "#000f",
     fontSize: 18,
     textAlign: "center",
     marginBottom: 32,
@@ -161,13 +161,12 @@ const styles = StyleSheet.create({
     gap: 14,
   },
   input: {
-    backgroundColor: "#1c1c1c",
-    color: "#fff",
+    backgroundColor: "F2F2F2",
+    color: "#000",
     padding: 16,
     borderRadius: 12,
     fontSize: 16,
     borderWidth: 1,
-    borderColor: "#2a2a2a",
     shadowColor: "#000",
     shadowOpacity: 0.3,
     shadowOffset: { width: 0, height: 2 },
@@ -178,8 +177,8 @@ const styles = StyleSheet.create({
     position: "relative",
   },
   inputWithIcon: {
-    backgroundColor: "#1c1c1c",
-    color: "#fff",
+    backgroundColor: "F2F2F2",
+    color: "#000",
     padding: 16,
     paddingRight: 45,
     borderRadius: 12,
@@ -192,18 +191,19 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 3,
   },
+
   icon: {
     position: "absolute",
     right: 16,
     top: 18,
   },
   forgotPassword: {
-    color: "#007bff",
+    color: "#578FCA",
     textAlign: "right",
     marginBottom: 20,
   },
   button: {
-    backgroundColor: "#fff",
+    backgroundColor: "#000",
     paddingVertical: 16,
     borderRadius: 12,
     alignItems: "center",
@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   buttonText: {
-    color: "#000",
+    color: "#fff",
     fontWeight: "bold",
     fontSize: 16,
   },
@@ -237,12 +237,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   checkMark: {
-  color: "#007bff",
+  color: "black",
   fontSize: 15,
   fontWeight: "bold",
 },
   termsText: {
-    color: "#aaa",
+    color: "222831",
     fontSize: 13,
     flexShrink: 1,
   },
@@ -278,11 +278,11 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   switchText: {
-    color: "#aaa",
+    color: "222831",
     textAlign: "center",
   },
   link: {
-    color: "#fff",
+    color: "#000",
     fontWeight: "bold",
   },
 });
