@@ -35,7 +35,7 @@ const shoes = [
     id: "2",
     name: "Vans Old Skool",
     price: "$70.00",
-    brand: "Vans",
+    brand: "Nike",
     year: "2022",
     material: "Canvas & Suede",
     releaseDate: "2022-10-10",

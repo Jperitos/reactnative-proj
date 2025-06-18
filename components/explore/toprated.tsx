@@ -30,6 +30,7 @@ const topRatedShoes = [
     material: "Mesh & Leather",
     rating: 4.8,
     releaseDate: "2020-03-15",
+    reviews: 6340,
   },
   {
     id: "2",
@@ -46,6 +47,7 @@ const topRatedShoes = [
     material: "Primeknit & Boost",
     rating: 4.7,
     releaseDate: "2019-12-20",
+    reviews: 7920,
   },
   {
     id: "3",
@@ -62,6 +64,7 @@ const topRatedShoes = [
     material: "Leather",
     rating: 4.6,
     releaseDate: "2021-01-08",
+    reviews: 5480,
   },
   {
     id: "4",
@@ -78,6 +81,7 @@ const topRatedShoes = [
     material: "Mesh & Rubber",
     rating: 4.5,
     releaseDate: "2022-05-11",
+    reviews: 4200,
   },
   {
     id: "5",
@@ -94,6 +98,7 @@ const topRatedShoes = [
     material: "Canvas & Suede",
     rating: 4.9,
     releaseDate: "2018-09-01",
+    reviews: 8800,
   },
 ];
 
@@ -162,6 +167,7 @@ onPress={() =>
       description: item.description,
       category: item.category,
       colorway: item.colorway,
+      reviews:item.reviews,
     },
   })
 }

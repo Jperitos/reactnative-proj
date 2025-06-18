@@ -15,6 +15,7 @@ export default function RootLayout() {
       <Stack.Screen name="shoedetail" options={{ headerShown: false }} />
       <Stack.Screen name="navbar/wishlist" options={{ headerShown: false }} />
       <Stack.Screen name="shoesbrand" options={{ headerShown: false }} />
+  <Stack.Screen name="recommended" options={{ headerShown: false }} />
 
     </Stack>
   );
