@@ -71,7 +71,7 @@ export default function ExploreScreen() {
 
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#fff", padding: 20 },
+  container: { flex: 1, backgroundColor: "#fff", padding: 20, marginTop: 30,},
   title: { fontSize: 20, fontWeight: "bold", marginBottom: 10 },
   searchSection: {
     flexDirection: "row",

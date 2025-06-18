@@ -128,6 +128,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: 10,
+    marginTop: 30,
   },
   greet: { fontSize: 14, color: "#888" },
   goodMorning: { fontSize: 18, fontWeight: "bold", marginBottom: 10 },
@@ -164,7 +165,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 23,
     backgroundColor: "#eee",
     height: 40,
-    borderRadius: 20,
+    borderRadius: 12,
   },
   categoryText: {
     fontSize: 14,

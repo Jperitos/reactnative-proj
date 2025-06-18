@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingTop: Platform.OS === "android" ? 60 : 80,
     paddingBottom: 30,
-    marginTop: -50,
+    marginTop: -30,
     paddingHorizontal: 24,
   },
  logoContainer: {

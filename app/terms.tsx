@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
   backButton: {
     position: "absolute",
-    top: 40,
+    top: 60,
     left: 20,
   },
   backText: {
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     marginBottom: 20,
-    marginTop:30,
+    marginTop:50,
   },
   content: {
     flex: 1,
