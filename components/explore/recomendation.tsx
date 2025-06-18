@@ -63,7 +63,8 @@ const styles = StyleSheet.create({
   container: {
       marginBottom: 0,
       padding:10,
-      marginLeft: -20,
+      marginRight: -30,
+      marginLeft: -25,
   },
   headerRow: {
     flexDirection: "row",

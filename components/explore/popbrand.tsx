@@ -1,65 +1,79 @@
-import React from "react";
-import { Text, ScrollView, View, Image, StyleSheet, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+import { Text, View, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { useRouter } from "expo-router";
 
 export default function PopularBrandSection() {
+  const [showAll, setShowAll] = useState(false);
+  const router = useRouter();
+
   const brands = [
     {
-      name: "Jordan",
       image: {
         uri: "https://cdn.freebiesupply.com/images/large/2x/air-jordan-logo-png-transparent.png",
       },
     },
     {
-      name: "Addidas",
       image: {
         uri: "https://static.vecteezy.com/system/resources/previews/010/994/239/non_2x/adidas-logo-black-symbol-clothes-design-icon-abstract-football-illustration-with-white-background-free-vector.jpg",
       },
     },
     {
-      name: "Nike",
       image: {
         uri: "https://1000logos.net/wp-content/uploads/2017/03/Nike-Logo.png",
       },
     },
     {
-      name: "Converse",
       image: {
         uri: "https://anthembranding.com/imager/media/Case-Studies/Bushmills-Irish-Whiskey/60524/Converse-Logo-2003-Update_50fddbcdf1bc5728890207d304f83f3a.webp",
       },
     },
     {
-      name: "Puma",
       image: {
         uri: "https://1000logos.net/wp-content/uploads/2017/05/Puma-Logo-tumb.png",
       },
     },
     {
-      name: "Vans",
       image: {
         uri: "https://logos-world.net/wp-content/uploads/2020/04/Vans-Emblem.png",
       },
     },
     {
-      name: "UnderArmor",
       image: {
         uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Under_armour_logo.svg/1280px-Under_armour_logo.svg.png",
       },
     },
   ];
 
+  const displayedBrands = showAll ? brands : brands.slice(0, 4);
+
+  const handleToggle = () => {
+    setShowAll((prev) => !prev);
+  };
+
+  const handleBrandPress = (index: number) => {
+    router.push({
+      pathname: "/shoesbrand",
+      params: { brandIndex: index.toString() },
+    });
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.titleRow}>
         <Text style={styles.popularBrandTitle}>POP BRAND</Text>
-        <TouchableOpacity>
-          <Text style={styles.seeAll}>See All</Text>
+        <TouchableOpacity onPress={handleToggle}>
+          <Text style={styles.seeAll}>{showAll ? "Show Less" : "See All"}</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.gridContainer}>
-        {brands.slice(0, 4).map((brand) => (
-          <View key={brand.name} style={styles.brandCard}>
+        {displayedBrands.map((brand, index) => (
+          <TouchableOpacity
+            key={index}
+            onPress={() => handleBrandPress(index)}
+            style={styles.brandCard}
+          >
             <Image source={brand.image} style={styles.brandImage} />
-          </View>
+          </TouchableOpacity>
         ))}
       </View>
     </View>
@@ -69,7 +83,7 @@ export default function PopularBrandSection() {
 const styles = StyleSheet.create({
   container: {
     marginBottom: 15,
-    paddingTop:10,
+    paddingTop: 10,
   },
   titleRow: {
     flexDirection: "row",
@@ -83,7 +97,7 @@ const styles = StyleSheet.create({
     color: "#555",
   },
   seeAll: {
-    fontSize: 12,
+    fontSize: 10,
     color: "gray",
   },
   gridContainer: {
@@ -100,7 +114,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 2,
     elevation: 3,
-    width: '48%',
+    width: "48%",
     height: 100,
     marginBottom: 12,
     justifyContent: "center",
