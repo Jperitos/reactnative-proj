@@ -13,7 +13,6 @@ import { FontAwesome } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import CommentSection from "@/components/home/comment";
 import RecommendationSection from "@/components/explore/recomendation";
-
 const ShoeDetail = () => {
 const {
   name,
@@ -78,10 +77,17 @@ const renderStars = (rating: number = 0, reviews: number = 0) => {
   <FontAwesome name="chevron-left" size={12} color="#333" />
 </TouchableOpacity>
 
-        <Image
-          source={{ uri: Array.isArray(image) ? image[0] : image }}
-          style={styles.image}
-        />
+       <Image
+  source={
+    typeof image === "string"
+      ? { uri: image }
+      : Array.isArray(image) && typeof image[0] === "string"
+      ? { uri: image[0] }
+      : require("@/assets/images/v1.1.png") // fallback
+  }
+  style={styles.image}
+/>
+
   <View style={styles.likeWrapper}>
   <TouchableOpacity onPress={toggleLike}>
     <FontAwesome

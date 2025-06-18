@@ -17,7 +17,7 @@ import ShoeCard from "@/components/home/shoecard";
 
 const shoes = [
   {
-    id: "6",
+    id: "1",
     name: "Vans Old Skool",
     price: "$70.00",
     brand: "Vans",
@@ -26,9 +26,22 @@ const shoes = [
     reviews: 4200,
     likes: 5000,
     liked: false,
-    image: require('../../assets/images/v1.1.png'),
+    image: require("@/assets/images/v1.1.png"),
+  },
+  {
+    id: "2",
+    name: "Vans Old Skool",
+    price: "$70.00",
+    brand: "Vans",
+    rating: 4.3,
+    sold: "110k",
+    reviews: 4200,
+    likes: 5000,
+    liked: false,
+    image: require("@/assets/images/v3.1.png"),
   },
 ];
+
 
 const categories = ["All", "Nike", "Addidas", "Converse", "Puma", "Vans", "UnderArmor"];
 

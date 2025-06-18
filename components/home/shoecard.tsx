@@ -53,15 +53,15 @@ const renderStars = (rating: number = 0) => {
     router.push({
       pathname: "/shoedetail",
       params: {
-        id: item.id,
-        name: item.name,
-        price: item.price,
-        rating: item.rating?.toString(),
-        sold: item.sold,
-        reviews: item.reviews?.toString(),
-        likes: item.likes?.toString(),
-        image: item.image, 
-      },
+      id: item.id,
+      name: item.name,
+      price: item.price,
+      rating: item.rating?.toString(),
+      sold: item.sold,
+      reviews: item.reviews?.toString(),
+      likes: item.likes?.toString(),
+      image: item.image, 
+    },
     })
   }
   style={styles.card}

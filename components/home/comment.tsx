@@ -163,7 +163,7 @@ likeCount: {
   text: {
     fontSize: 14,
     color: "#444",
-    marginTop: 2,
+    marginTop: -7,
   },
   likeButton: {
     paddingLeft: 5,
