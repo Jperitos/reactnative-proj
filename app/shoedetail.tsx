@@ -13,15 +13,38 @@ import { FontAwesome } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import CommentSection from "@/components/home/comment";
 import RecommendationSection from "@/components/explore/recomendation";
+
 const ShoeDetail = () => {
 const {
   name,
   price,
   image,
+  imageKey: rawImageKey,
   rating = "0",
   reviews = "0",
   likes = "0",
+  brand = "Unknown",
+  year = "Unknown",
+  sold = "0",
+  material = "Unknown",
+  releaseDate = "Unknown",
 } = useLocalSearchParams();
+
+const imageKey = Array.isArray(rawImageKey) ? rawImageKey[0] : rawImageKey;
+
+const imageMap: Record<string, any> = {
+  "1": require("@/assets/images/v1.1.png"),
+  "2": require("@/assets/images/v4.1.png"),
+
+};
+
+let imageSource;
+
+if (image && typeof image === "string" && image.startsWith("http")) {
+  imageSource = { uri: image };
+} else if (imageKey && imageMap[imageKey]) {
+  imageSource = imageMap[imageKey];
+} 
 
 const numericRating = Number(rating);
 const numericReviews = Number(reviews);
@@ -46,6 +69,13 @@ const formatCount = (count: number): string => {
 };
 
   const toggleLike = () => setLiked(!liked);
+const parsedDate = Array.isArray(releaseDate) ? releaseDate[0] : releaseDate;
+
+const formattedReleaseDate = new Date(parsedDate).toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
 
 const renderStars = (rating: number = 0, reviews: number = 0) => {
   const stars = [];
@@ -73,20 +103,18 @@ const renderStars = (rating: number = 0, reviews: number = 0) => {
     <ScrollView showsVerticalScrollIndicator={false}>
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <TouchableOpacity style={styles.backIcon} onPress={() => router.push("/navbar/homepage")}>
+        <TouchableOpacity style={styles.backIcon} onPress={() => router.back()}
+>
   <FontAwesome name="chevron-left" size={12} color="#333" />
 </TouchableOpacity>
 
-       <Image
+ <Image
   source={
-    typeof image === "string"
-      ? { uri: image }
-      : Array.isArray(image) && typeof image[0] === "string"
-      ? { uri: image[0] }
-      : require("@/assets/images/v1.1.png") // fallback
+    imageSource ? imageSource : require("@/assets/images/v1.1.png")
   }
   style={styles.image}
 />
+
 
   <View style={styles.likeWrapper}>
   <TouchableOpacity onPress={toggleLike}>
@@ -120,6 +148,36 @@ const renderStars = (rating: number = 0, reviews: number = 0) => {
           This stylish shoe is designed for comfort and performance. Perfect for
           casual wear or athletic activities.
         </Text>
+<ScrollView
+  horizontal
+  showsHorizontalScrollIndicator={false}
+  style={styles.metaScroll}
+  contentContainerStyle={styles.metaContainer}
+>
+  <View style={styles.metaTag}>
+    <FontAwesome name="tag" size={12} color="#444" />
+    <Text style={styles.metaText}>{brand}</Text>
+  </View>
+  <View style={styles.metaTag}>
+    <FontAwesome name="calendar" size={12} color="#444" />
+    <Text style={styles.metaText}>{year}</Text>
+  </View>
+  <View style={styles.metaTag}>
+    <FontAwesome name="shopping-cart" size={12} color="#444" />
+    <Text style={styles.metaText}>{sold} sold</Text>
+  </View>
+  <View style={styles.metaTag}>
+    <FontAwesome name="cubes" size={12} color="#444" />
+    <Text style={styles.metaText}>{material}</Text>
+  </View>
+  
+<View style={styles.metaTag}>
+  <FontAwesome name="clock-o" size={12} color="#444" />
+  <Text style={styles.metaText}>Released: {formattedReleaseDate}</Text>
+</View>
+
+</ScrollView>
+
 
         <Text style={styles.sectionTitle}>Colors</Text>
         <View style={styles.colorRow}>
@@ -187,6 +245,30 @@ export default ShoeDetail;
 const { width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
+metaScroll: {
+  marginTop: 12,
+  marginBottom: 16,
+},
+metaContainer: {
+  flexDirection: "row",
+  gap: 10,
+  paddingHorizontal: 4,
+},
+metaTag: {
+  flexDirection: "row",
+  alignItems: "center",
+  backgroundColor: "#f2f2f2",
+  borderRadius: 20,
+  paddingHorizontal: 12,
+  paddingVertical: 6,
+  gap: 6,
+},
+metaText: {
+  fontSize: 13,
+  color: "#333",
+},
+
+
   backIcon: {
   position: "absolute",
   top: 40,

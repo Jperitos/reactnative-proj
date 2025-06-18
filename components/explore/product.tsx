@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Text, View, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, View, Image, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
-
+import {useRouter} from 'expo-router';
 type Product = {
   name: string;
   image: { uri: string };
@@ -11,12 +11,13 @@ type Product = {
 
 export default function ExploreProductSection() {
   const [likedItems, setLikedItems] = useState<{ [key: string]: boolean }>({});
-
+  const [showAll, setShowAll] = useState(false);
+ const router = useRouter();
   const toggleLike = (name: string) => {
     setLikedItems((prev) => ({ ...prev, [name]: !prev[name] }));
   };
 
-  const products: Product[] = [
+  const allProducts: Product[] = [
     {
       name: "Air Max 90",
       image: {
@@ -49,36 +50,82 @@ export default function ExploreProductSection() {
       rating: 4.6,
       sold: 290,
     },
+    {
+      name: "Yeezy Boost",
+      image: {
+        uri: "https://cdn.flightclub.com/750/TEMPLATE/805558/1.jpg",
+      },
+      rating: 4.8,
+      sold: 410,
+    },
+    {
+      name: "New Balance 550",
+      image: {
+        uri: "https://nb.scene7.com/is/image/NB/m550bb1_nb_02_i?$pdpflexf2$&wid=440&hei=440",
+      },
+      rating: 4.4,
+      sold: 200,
+    },
+    {
+      name: "Nike Dunk Low",
+      image: {
+        uri: "https://static.nike.com/a/images/t_default/b0cc1193-8059-4a30-a9e6-2389d37fbb88/dunk-low-retro-shoes-BHFxMS.png",
+      },
+      rating: 4.6,
+      sold: 310,
+    },
+    {
+      name: "Adidas Gazelle",
+      image: {
+        uri: "https://assets.adidas.com/images/w_600,f_auto,q_auto/fb06d3a6c3424be2b158af11010a9a9e_9366/Gazelle_Shoes_Blue_BB5478_01_standard.jpg",
+      },
+      rating: 4.5,
+      sold: 270,
+    },
   ];
+
+  const productsToShow = showAll ? allProducts : allProducts.slice(0, 4);
 
   const renderStars = (rating: number) => {
     const fullStars = Math.floor(rating);
-    const stars = [];
-    for (let i = 0; i < 5; i++) {
-      stars.push(
-        <FontAwesome
-          key={i}
-          name={i < fullStars ? "star" : "star-o"}
-          size={12}
-          color="#FFD700"
-        />
-      );
-    }
-    return stars;
+    return Array.from({ length: 5 }).map((_, i) => (
+      <FontAwesome
+        key={i}
+        name={i < fullStars ? "star" : "star-o"}
+        size={12}
+        color="#FFD700"
+      />
+    ));
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.titleRow}>
         <Text style={styles.title}>LATEST SHOES</Text>
-        <TouchableOpacity>
-          <Text style={styles.seeAll}>See All</Text>
+        <TouchableOpacity onPress={() => setShowAll(!showAll)}>
+          <Text style={styles.seeAll}>{showAll ? "Show Less" : "See All"}</Text>
         </TouchableOpacity>
       </View>
 
-      <View style={styles.gridContainer}>
-        {products.map((product) => (
-          <View key={product.name} style={styles.productCard}>
+    <View style={styles.gridContainer}>
+        {productsToShow.map((product) => (
+          <TouchableOpacity
+            key={product.name}
+            style={styles.productCard}
+            onPress={() =>
+              router.push({
+                pathname: "/shoedetail",
+                params: {
+                  name: product.name,
+                  image: product.image.uri,
+                  rating: product.rating.toString(),
+                  sold: product.sold.toString(),
+                  price: "$199", 
+                   reviews: "45",
+                },
+              })
+            }
+          >
             <Image source={product.image} style={styles.productImage} />
             <View style={styles.infoContainer}>
               <View style={styles.nameRow}>
@@ -94,7 +141,7 @@ export default function ExploreProductSection() {
               <View style={styles.ratingRow}>{renderStars(product.rating)}</View>
               <Text style={styles.soldText}>{product.sold}+ sold</Text>
             </View>
-          </View>
+          </TouchableOpacity>
         ))}
       </View>
     </View>

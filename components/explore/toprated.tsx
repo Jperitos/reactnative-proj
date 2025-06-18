@@ -11,7 +11,7 @@ import {
 import { AntDesign } from "@expo/vector-icons";
 import { BlurView } from "expo-blur";
 import { ScrollView } from "react-native";
-
+import { useRouter } from "expo-router";
 const { width } = Dimensions.get("window");
 
 const topRatedShoes = [
@@ -104,7 +104,7 @@ export default function TopRatedShoesSection() {
   const [isScrolling, setIsScrolling] = useState(false);
   const scrollTimeout = useRef<number | null>(null);
 const scrollRef = useRef<ScrollView>(null);
-
+const router = useRouter();
   const toggleLike = (id: string) => {
     setLiked((prev) =>
       prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
@@ -134,7 +134,7 @@ return (
       ref={scrollRef}
       horizontal
       showsHorizontalScrollIndicator={false}
-      pagingEnabled={false} // we scroll manually
+      pagingEnabled={false}
       onTouchStart={() => {
         setIsScrolling(true);
         if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
@@ -144,6 +144,29 @@ return (
       }}
     >
       {topRatedShoes.map((item) => (
+        <TouchableOpacity
+  key={item.id}
+onPress={() =>
+  router.push({
+    pathname: "/shoedetail",
+    params: {
+      name: item.name,
+      price: item.price,
+      image: item.image,
+      rating: item.rating.toString(),
+      brand: item.provider,
+      year: item.year,
+      sold: item.sold,
+      material: item.material,
+      releaseDate: item.releaseDate,
+      description: item.description,
+      category: item.category,
+      colorway: item.colorway,
+    },
+  })
+}
+
+>
         <BlurView key={item.id} intensity={50} tint="light" style={styles.card}>
           <Image source={{ uri: item.image }} style={styles.image} />
           <View style={styles.details}>
@@ -171,6 +194,7 @@ return (
             <Text style={styles.info}>Released: {item.releaseDate}</Text>
           </View>
         </BlurView>
+        </TouchableOpacity>
       ))}
     </ScrollView>
   </View>

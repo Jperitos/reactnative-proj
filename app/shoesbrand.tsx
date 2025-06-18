@@ -107,7 +107,7 @@ export default function ShoesBrand() {
     <View style={styles.container}>
       {/* Back Arrow */}
       <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
-        <FontAwesome name="angle-left" size={28} color="#000" />
+        <FontAwesome name="angle-left" size={18} color="#000" />
       </TouchableOpacity>
 
       <Text style={styles.title}>{brandNames[index]}</Text>
@@ -167,14 +167,15 @@ const styles = StyleSheet.create({
   },
   backButton: {
     position: "absolute",
-    top: 20,
+    top: 60,
     left: 16,
     zIndex: 10,
   },
   title: {
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: "700",
     marginBottom: 16,
+    marginTop: 30,
     textAlign: "center",
   },
   row: {

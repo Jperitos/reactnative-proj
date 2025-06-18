@@ -22,6 +22,10 @@ interface Shoe {
   reviews?: number;
   likes?: number;
   liked?: boolean;
+  brand?: string;
+  year?: string;
+  material?: string;
+  releaseDate?: string;
 }
 
 
@@ -53,19 +57,24 @@ const renderStars = (rating: number = 0) => {
     router.push({
       pathname: "/shoedetail",
       params: {
-      id: item.id,
-      name: item.name,
-      price: item.price,
-      rating: item.rating?.toString(),
-      sold: item.sold,
-      reviews: item.reviews?.toString(),
-      likes: item.likes?.toString(),
-      image: item.image, 
-    },
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        rating: item.rating?.toString(),
+        sold: item.sold,
+        reviews: item.reviews?.toString(),
+        likes: item.likes?.toString(),
+        imageKey: item.id, 
+        brand: item.brand,
+        year: item.year,
+        material: item.material,
+        releaseDate: item.releaseDate,
+      },
     })
   }
   style={styles.card}
 >
+
 
 
     <BlurView intensity={50} tint="light">
