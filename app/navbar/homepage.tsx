@@ -44,7 +44,7 @@ const shoes = [
     reviews: 7800,
     likes: 8200,
     liked: false,
-    image: require("@/assets/images/v2.1.png"),
+    image: require("@/assets/images/2.png"),
   },
   {
     id: "3",
@@ -59,7 +59,7 @@ const shoes = [
     reviews: 9200,
     likes: 11000,
     liked: false,
-    image: require("@/assets/images/v1.1.png"),
+    image: require("@/assets/images/3.png"),
   },
   {
     id: "4",
@@ -74,7 +74,7 @@ const shoes = [
     reviews: 5000,
     likes: 4600,
     liked: false,
-    image: require("@/assets/images/v1.1.png"),
+    image: require("@/assets/images/4.png"),
   },
   {
     id: "5",
@@ -89,7 +89,7 @@ const shoes = [
     reviews: 3500,
     likes: 3900,
     liked: false,
-    image: require("@/assets/images/v1.1.png"),
+    image: require("@/assets/images/5.png"),
   },
   {
     id: "6",
@@ -104,7 +104,7 @@ const shoes = [
     reviews: 4100,
     likes: 4300,
     liked: false,
-    image: require("@/assets/images/v1.1.png"),
+    image: require("@/assets/images/6.png"),
   },
   {
     id: "7",
@@ -119,7 +119,7 @@ const shoes = [
     reviews: 2900,
     likes: 2700,
     liked: false,
-    image: require("@/assets/images/v1.1.png"),
+    image: require("@/assets/images/7.png"),
   },
   {
     id: "8",
@@ -134,7 +134,7 @@ const shoes = [
     reviews: 8400,
     likes: 10000,
     liked: false,
-    image: require("@/assets/images/v1.1.png"),
+    image: require("@/assets/images/8.png"),
   },
   {
     id: "9",
@@ -149,7 +149,7 @@ const shoes = [
     reviews: 7600,
     likes: 9400,
     liked: false,
-    image: require("@/assets/images/v1.1.png"),
+    image: require("@/assets/images/9.png"),
   },
   {
     id: "10",
@@ -164,7 +164,7 @@ const shoes = [
     reviews: 1800,
     likes: 2000,
     liked: false,
-   image: require("@/assets/images/v1.1.png"),
+   image: require("@/assets/images/10.png"),
   },
   {
     id: "11",
@@ -179,7 +179,7 @@ const shoes = [
     reviews: 4100,
     likes: 4500,
     liked: false,
-    image: require("@/assets/images/v1.1.png"),
+    image: require("@/assets/images/11.png"),
   },
   {
     id: "12",
@@ -194,7 +194,7 @@ const shoes = [
     reviews: 3200,
     likes: 3100,
     liked: false,
-    image: require("@/assets/images/v1.1.png"),
+    image: require("@/assets/images/12.png"),
   },
   {
     id: "13",
@@ -209,7 +209,7 @@ const shoes = [
     reviews: 9000,
     likes: 15000,
     liked: false,
-    image: require("@/assets/images/v1.1.png"),
+    image: require("@/assets/images/13.png"),
   },
   {
     id: "14",
@@ -224,7 +224,7 @@ const shoes = [
     reviews: 3900,
     likes: 4200,
     liked: false,
-    image: require("@/assets/images/v1.1.png"),
+    image: require("@/assets/images/14.png"),
   },
   {
     id: "15",
@@ -239,7 +239,7 @@ const shoes = [
     reviews: 1600,
     likes: 1700,
     liked: false,
-    image: require("@/assets/images/v1.1.png"),
+    image: require("@/assets/images/15.png"),
   },
   {
     id: "16",
@@ -254,7 +254,7 @@ const shoes = [
     reviews: 1200,
     likes: 5000,
     liked: false,
- image: require("@/assets/images/v1.1.png"),
+ image: require("@/assets/images/16.png"),
   },
   {
     id: "17",
@@ -269,7 +269,7 @@ const shoes = [
     reviews: 9500,
     likes: 12000,
     liked: false,
-   image: require("@/assets/images/v1.1.png"),
+   image: require("@/assets/images/17.png"),
   },
   {
     id: "18",
@@ -284,7 +284,7 @@ const shoes = [
     reviews: 4700,
     likes: 5300,
     liked: false,
-    image: require("@/assets/images/v1.1.png"),
+    image: require("@/assets/images/18.png"),
   },
   {
     id: "19",
@@ -299,27 +299,12 @@ const shoes = [
     reviews: 3100,
     likes: 3600,
     liked: false,
-    image: require("@/assets/images/v1.1.png"),
-  },
-  {
-    id: "20",
-    name: "Crocs Classic Clog",
-    price: "$50.00",
-    brand: "Crocs",
-    year: "2022",
-    material: "Croslite Foam",
-    releaseDate: "2022-07-07",
-    rating: 4.0,
-    sold: "220k",
-    reviews: 5600,
-    likes: 6400,
-    liked: false,
-    image: require("@/assets/images/v1.1.png"),
+    image: require("@/assets/images/19.png"),
   },
 ];
 
 
-const categories = ["All", "Nike", "Addidas", "Converse", "Puma", "Vans", "UnderArmor"];
+const categories = ["All", "Nike", "Adidas", "Converse", "Puma", "Vans", "Under Armour", "Hoka", "Asics", "Jordan", "Balenciaga", "Saucony","Fila","Reebok"];
 
 export default function HomeScreen() {
   const [activeTab, setActiveTab] = useState("Home");
