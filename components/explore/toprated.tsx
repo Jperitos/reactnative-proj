@@ -19,8 +19,7 @@ const topRatedShoes = [
     id: "1",
     name: "Air Max 90",
     image:
-      "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/dfdf1a09-cd11-49bb-b558-5c2b5dfb011f/air-max-90-mens-shoes-nw30Kz.png",
-    provider: "Nike",
+      "https://i.ebayimg.com/images/g/WyoAAOSwFDVnN5-N/s-l1200.png",
     year: "2020",
     sold: "85k",
     description: "A timeless classic known for comfort and iconic style.",
@@ -36,7 +35,7 @@ const topRatedShoes = [
     id: "2",
     name: "Yeezy Boost 350",
     image:
-      "https://sneakernews.com/wp-content/uploads/2019/11/adidas-yeezy-boost-350-v2-yecheil-release-date.jpg",
+      "https://i.pinimg.com/736x/0f/62/04/0f62049b68f25da00c320086887a40b4.jpg",
     provider: "Adidas",
     year: "2019",
     sold: "100k",
@@ -53,7 +52,7 @@ const topRatedShoes = [
     id: "3",
     name: "Nike Dunk Low",
     image:
-      "https://images.stockx.com/images/Nike-Dunk-Low-Retro-White-Black-2021-Product.jpg",
+      "https://images.stockx.com/images/Nike-Dunk-Low-Retro-White-Black-2021-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1738193358",
     provider: "Nike",
     year: "2021",
     sold: "76k",
@@ -70,7 +69,7 @@ const topRatedShoes = [
     id: "4",
     name: "Puma RS-X",
     image:
-      "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_500,h_500/global/369666/19/sv01/fnd/PHL/fmt/png",
+      "https://images.stockx.com/images/Puma-RS-X-Black-White.jpg?fit=fill&bg=FFFFFF&w=480&h=320&q=60&dpr=1&trim=color&updated_at=1639998052",
     provider: "Puma",
     year: "2022",
     sold: "60k",
@@ -87,7 +86,7 @@ const topRatedShoes = [
     id: "5",
     name: "Vans Old Skool",
     image:
-      "https://images.vans.com/is/image/Vans/D3HY28-HERO?$PDP-FULL-IMAGE$",
+      "https://www.shooos.com/media/catalog/product/cache/2/image/1350x778/9df78eab33525d08d6e5fb8d27136e95/v/n/vn0009q6cbt1-1.jpg",
     provider: "Vans",
     year: "2018",
     sold: "120k",

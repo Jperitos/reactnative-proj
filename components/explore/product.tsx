@@ -21,7 +21,7 @@ export default function ExploreProductSection() {
     {
       name: "Air Max 90",
       image: {
-        uri: "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/24e27f14-7351-41a8-8b1e-0b3e306d40ce/air-max-90-shoes.png",
+        uri: "https://i.ebayimg.com/images/g/WyoAAOSwFDVnN5-N/s-l1200.png",
       },
       rating: 4.5,
       sold: 220,
@@ -29,7 +29,7 @@ export default function ExploreProductSection() {
     {
       name: "Ultraboost",
       image: {
-        uri: "https://assets.adidas.com/images/w_600,f_auto,q_auto/f0d46b9e8f824c8e9f1eaf1d015e8a64_9366/Ultraboost_Light_Shoes_White_HQ6338_01_standard.jpg",
+        uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYksAkIaLPPJz5H1fb8OA0twb15-FXBTpRaBx3zEeQZL463U1iMNO7VxEywT3aN2H_P50&usqp=CAU",
       },
       rating: 4.7,
       sold: 340,
@@ -37,7 +37,7 @@ export default function ExploreProductSection() {
     {
       name: "Chuck Taylor",
       image: {
-        uri: "https://www.converse.ph/media/catalog/product/cache/1/small_image/600x/9df78eab33525d08d6e5fb8d27136e95/M/9/M9697C_0.jpg",
+        uri: "https://www.pngkey.com/png/full/83-837858_antique-converse-shoes-drawing-chuck-taylor-all-star.png",
       },
       rating: 4.3,
       sold: 180,
@@ -45,7 +45,7 @@ export default function ExploreProductSection() {
     {
       name: "RS-X",
       image: {
-        uri: "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_450,h_450/global/390777/01/sv01/fnd/PHL/fmt/png",
+        uri: "https://images.stockx.com/images/Puma-RS-X-Black-White.jpg?fit=fill&bg=FFFFFF&w=480&h=320&q=60&dpr=1&trim=color&updated_at=1639998052",
       },
       rating: 4.6,
       sold: 290,
@@ -61,7 +61,7 @@ export default function ExploreProductSection() {
     {
       name: "New Balance 550",
       image: {
-        uri: "https://nb.scene7.com/is/image/NB/m550bb1_nb_02_i?$pdpflexf2$&wid=440&hei=440",
+        uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPsx2uUedyYqJUtnw83yfuEu2DHMVtf_AN8Q&s",
       },
       rating: 4.4,
       sold: 200,
@@ -69,7 +69,7 @@ export default function ExploreProductSection() {
     {
       name: "Nike Dunk Low",
       image: {
-        uri: "https://static.nike.com/a/images/t_default/b0cc1193-8059-4a30-a9e6-2389d37fbb88/dunk-low-retro-shoes-BHFxMS.png",
+        uri: "https://images.stockx.com/images/Nike-Dunk-Low-Retro-White-Black-2021-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1738193358",
       },
       rating: 4.6,
       sold: 310,
@@ -77,7 +77,7 @@ export default function ExploreProductSection() {
     {
       name: "Adidas Gazelle",
       image: {
-        uri: "https://assets.adidas.com/images/w_600,f_auto,q_auto/fb06d3a6c3424be2b158af11010a9a9e_9366/Gazelle_Shoes_Blue_BB5478_01_standard.jpg",
+        uri: "https://hypedfam.com/cdn/shop/files/adidas-gazelle-core-black-cloud-white-gold4.webp?v=1712103161",
       },
       rating: 4.5,
       sold: 270,

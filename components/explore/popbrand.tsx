@@ -42,6 +42,36 @@ export default function PopularBrandSection() {
         uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Under_armour_logo.svg/1280px-Under_armour_logo.svg.png",
       },
     },
+     {
+      image: {
+        uri: "https://elephantsperch.com/wp-content/uploads/2024/10/HOKA-logo.png",
+      },
+    },
+    {
+      image: {
+        uri: "https://images.seeklogo.com/logo-png/49/2/asics-logo-png_seeklogo-499804.png",
+      },
+    },
+    {
+      image: {
+        uri: "https://images.seeklogo.com/logo-png/36/1/balenciaga-logo-png_seeklogo-365962.png",
+      },
+    },
+     {
+      image: {
+        uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbP30ygfAcTOpeUmbOFnrGLloe34-8_0xq6w&s",
+      },
+    },
+     {
+      image: {
+        uri: "https://static.vecteezy.com/system/resources/previews/023/870/519/non_2x/fila-brand-logo-symbol-black-design-clothes-fashion-illustration-free-vector.jpg",
+      },
+    },
+    {
+      image: {
+        uri: "https://static.vecteezy.com/system/resources/previews/021/963/705/non_2x/reebok-logo-illustration-free-vector.jpg",
+      },
+    },
   ];
 
   const displayedBrands = showAll ? brands : brands.slice(0, 4);
