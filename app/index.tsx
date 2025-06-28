@@ -1,44 +1,40 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity, Dimensions, Platform, ScrollView } from "react-native";
-import { Link } from "expo-router";
 import { useRouter } from "expo-router";
+import { Dimensions, Image, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const { width, height } = Dimensions.get("window");
-const router = useRouter();
 
 export default function Index() {
+  const router = useRouter();
+
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <View style={styles.container}>
-        {/* Top Left Logo */}
+        {/* Logo + Clickable */}
         <View style={styles.logoContainer}>
           <Text style={styles.logoText}>SoleCraft</Text>
-           <TouchableOpacity onPress={() => router.push("/signup")}>
-          <Image
-            source={require("../assets/images/logo.png")}
-            style={styles.logoImage}/>
-</TouchableOpacity>
+          <TouchableOpacity onPress={() => router.push("/signup")}>
+            <Image source={require("../assets/images/logo.png")} style={styles.logoImage} />
+          </TouchableOpacity>
         </View>
 
         {/* Shoe Image */}
-        <Image source={require("../assets/images/jordan.png")} style={styles.shoeImage} resizeMode="contain" />
+        <Image source={require("../assets/images/11.png")} style={styles.shoeImage} resizeMode="contain" />
 
         {/* Text Section */}
-       <View style={styles.textContainer}>
-        <Text style={styles.title}>
-          Comfort is{"\n"}
-          <Text style={styles.bold}>everything</Text>
-        </Text>
-        <Text style={styles.subtitle}>
-          Find the best shoes for comfort in your daily activities.{"\n"}
-          Designed for movement, built for style into confidence.
-        </Text>
-      </View>
-        {/* Get Started Button */}
-        <Link href="/login" asChild>
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Get Started</Text>
-          </TouchableOpacity>
-        </Link>
+        <View style={styles.textContainer}>
+          <Text style={styles.title}>
+            Comfort is{"\n"}
+            <Text style={styles.bold}>everything</Text>
+          </Text>
+          <Text style={styles.subtitle}>
+            Find the best shoes for comfort in your daily activities.{"\n"}
+            Designed for movement, built for style into confidence.
+          </Text>
+        </View>
+
+        <TouchableOpacity style={styles.button} activeOpacity={0.8} onPress={() => router.push("/login")}>
+          <Text style={styles.buttonText}>Get Started</Text>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );
@@ -58,32 +54,31 @@ const styles = StyleSheet.create({
     marginTop: -30,
     paddingHorizontal: 24,
   },
- logoContainer: {
-  flexDirection: "row",
-  alignItems: "center",
-  justifyContent: "space-between",
-  width: "110%",
-  paddingHorizontal: 10,
-},
-logoText: {
-  fontSize: 24,
-  fontWeight: "bold",
-  color: "#000",
-},
-logoImage: {
-  width: 50,
-  height: 50,
-  resizeMode: "contain",
-},
+  logoContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "110%",
+    paddingHorizontal: 10,
+  },
+  logoText: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#000",
+  },
+  logoImage: {
+    width: 50,
+    height: 50,
+    resizeMode: "contain",
+  },
 
-shoeImage: {
-  width: width * 1.6,       
-  height: height * 0.6,    
-  transform: [{ rotate: "-30deg" }],
-  marginRight: 100,
-  marginTop: -50,
-
-},
+  shoeImage: {
+    width: width * 1.2,
+    height: height * 0.6,
+    transform: [{ rotate: "-30deg" }],
+    marginRight: 10,
+    marginTop: -100,
+  },
 
   textContainer: {
     alignItems: "center",

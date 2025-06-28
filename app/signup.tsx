@@ -1,13 +1,7 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet,
-} from "react-native";
-import { useRouter } from "expo-router";
 import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
+import React, { useState } from "react";
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 export default function SignupScreen() {
   const router = useRouter();
@@ -28,16 +22,8 @@ export default function SignupScreen() {
 
       {/* Form */}
       <View style={styles.form}>
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          placeholderTextColor="#888"
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Username"
-          placeholderTextColor="#888"
-        />
+        <TextInput style={styles.input} placeholder="Email" placeholderTextColor="#888" />
+        <TextInput style={styles.input} placeholder="Username" placeholderTextColor="#888" />
 
         <View style={styles.inputWrapper}>
           <TextInput
@@ -46,15 +32,8 @@ export default function SignupScreen() {
             placeholderTextColor="#888"
             secureTextEntry={!showPassword}
           />
-          <TouchableOpacity
-            style={styles.icon}
-            onPress={() => setShowPassword(!showPassword)}
-          >
-            <FontAwesome
-              name={showPassword ? "eye" : "eye-slash"}
-              size={16}
-              color="#666"
-            />
+          <TouchableOpacity style={styles.icon} onPress={() => setShowPassword(!showPassword)}>
+            <FontAwesome name={showPassword ? "eye" : "eye-slash"} size={16} color="#666" />
           </TouchableOpacity>
         </View>
 
@@ -65,37 +44,26 @@ export default function SignupScreen() {
             placeholderTextColor="#888"
             secureTextEntry={!showConfirmPassword}
           />
-          <TouchableOpacity
-            style={styles.icon}
-            onPress={() => setShowConfirmPassword(!showConfirmPassword)}
-          >
-            <FontAwesome
-              name={showConfirmPassword ? "eye" : "eye-slash"}
-              size={16}
-              color="#666"
-            />
+          <TouchableOpacity style={styles.icon} onPress={() => setShowConfirmPassword(!showConfirmPassword)}>
+            <FontAwesome name={showConfirmPassword ? "eye" : "eye-slash"} size={16} color="#666" />
           </TouchableOpacity>
         </View>
 
-      <View style={styles.checkboxContainer}>
-      <TouchableOpacity
-        style={styles.checkbox}
-        onPress={() => setAcceptedTerms(!acceptedTerms)}
-      >
-        {acceptedTerms && <Text style={styles.checkMark}>✓</Text>}
-      </TouchableOpacity>
-      <Text style={styles.termsText}>
-        I accept the{" "}
-        <Text style={styles.link} onPress={() => router.push("/terms")}>
-          Terms & Conditions
-        </Text>
-      </Text>
-    </View>
-
+        <View style={styles.checkboxContainer}>
+          <TouchableOpacity style={styles.checkbox} onPress={() => setAcceptedTerms(!acceptedTerms)}>
+            {acceptedTerms && <Text style={styles.checkMark}>✓</Text>}
+          </TouchableOpacity>
+          <Text style={styles.termsText}>
+            I accept the{" "}
+            <Text style={styles.link} onPress={() => router.push("/terms")}>
+              Terms & Conditions
+            </Text>
+          </Text>
+        </View>
 
         <TouchableOpacity style={styles.button} onPress={() => router.push("/login")}>
-    <Text style={styles.buttonText}>Sign Up</Text>
-  </TouchableOpacity>
+          <Text style={styles.buttonText}>Sign Up</Text>
+        </TouchableOpacity>
       </View>
 
       {/* Divider */}
@@ -154,7 +122,7 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   header: {
-    color: "000",
+    color: "#000",
     fontSize: 18,
     textAlign: "center",
     marginBottom: 32,
@@ -163,36 +131,26 @@ const styles = StyleSheet.create({
     gap: 14,
   },
   input: {
-    backgroundColor: "1c1c1c",
+    backgroundColor: "#fff",
     color: "#000",
     padding: 16,
     borderRadius: 12,
     fontSize: 16,
     borderWidth: 1,
-    borderColor: "#2a2a2a",
-    shadowColor: "#000",
-    shadowOpacity: 0.3,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 4,
-    elevation: 3,
+    borderColor: "#ccc",
   },
   inputWrapper: {
     position: "relative",
   },
   inputWithIcon: {
-    backgroundColor: "F2F2F2",
+    backgroundColor: "#fff",
     color: "#000",
     padding: 16,
     paddingRight: 45,
     borderRadius: 12,
     fontSize: 16,
     borderWidth: 1,
-    borderColor: "#2a2a2a",
-    shadowColor: "#000",
-    shadowOpacity: 0.3,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 4,
-    elevation: 3,
+    borderColor: "#ccc",
   },
   icon: {
     position: "absolute",
@@ -217,13 +175,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   checkMark: {
-  color: "black",
-  fontSize: 15,
-  fontWeight: "bold",
-},
-
+    color: "black",
+    fontSize: 15,
+    fontWeight: "bold",
+  },
   termsText: {
-    color: "222831",
+    color: "#222831",
     fontSize: 13,
     flexShrink: 1,
     marginTop: 40,
@@ -277,7 +234,7 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   switchText: {
-    color: "222831",
+    color: "#222831",
     textAlign: "center",
   },
   link: {
